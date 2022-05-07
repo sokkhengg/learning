@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<input id="input" type="text">
+<button id="button">Submit</button>
+<script>
+
+const input = document.querySelector("#input");
+
+input.addEventListener("keypress", function(e){
+console.log(e)
+})
+
+const btn = document.querySelector("#button");
+btn.addEventListener('contextmenu',function(e){
+e.preventDefault();
+alert("Sorry, you can't use right click!");
+})
+
+</script>
+</body>
+</html> 
