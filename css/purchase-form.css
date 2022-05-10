@@ -31,9 +31,61 @@
   --button-background-color: #02203c;
 }
 
-/*  Write your code here. */
+#wrapper {
+  border-radius: var(--wrapper-border-radius);
+  padding: var(--wrapper-padding);
+  background-color: var(--wrapper-background-color);
+}
 
-/* Delete this ruleset. */
-body {
-  background-color: grey;
+ol {
+  display: flex;
+  padding: 0;
+  counter-reset: list-items;
+}
+
+li {
+  list-style-type: none;
+}
+
+ol li {
+  position: relative;
+  text-align: center;
+  flex-basis: 100%;
+}
+
+ol li::before {
+  counter-increment: list-items;
+  content: counter(list-items);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--circle-width);
+  height: var(--circle-width);
+  border-radius: 50%;
+  border: var(--circle-border-width) solid black;
+  margin: 0 auto var(--circle-bottom-margin) auto;
+  background-color: white;
+  font-size: var(--circle-font-size);
+}
+
+.selected::before {
+  color: white;
+  background-color: var(--selected-background-color);
+}
+
+ol li::not(:first-of-type)::after {
+  content: "";
+  display: block;
+  width: calc(100% - var(--circle-width));
+  height: var(--divider-line-height);
+  background-color: black;
+  position: absolute;
+  left: calc(-50% + var(--circle-radius));
+  top: calc(var(--circle-radius) +
+        var(--circle-border-width) -
+        var(--divider-line-height) / 2);
+}
+
+ul {
+  padding: 0;
 }
