@@ -73,7 +73,7 @@ ol li::before {
   background-color: var(--selected-background-color);
 }
 
-ol li::not(:first-of-type)::after {
+ol li:not(:first-of-type)::after {
   content: "";
   display: block;
   width: calc(100% - var(--circle-width));
@@ -86,6 +86,98 @@ ol li::not(:first-of-type)::after {
         var(--divider-line-height) / 2);
 }
 
+ol {
+  display: flex;
+  padding: 0;
+  counter-reset: list-items;
+}
+
+li {
+  list-style-type: none;
+}
+
+ol li {
+  position: relative;
+  text-align: center;
+  flex-basis: 100%;
+}
+
+ol li::before {
+  counter-increment: list-items;
+  content: counter(list-items);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--circle-width);
+  height: var(--circle-width);
+  border-radius: 50%;
+  border: var(--circle-border-width) solid black;
+  margin: 0 auto var(--circle-bottom-margin) auto;
+  background-color: white;
+  font-size: var(--circle-font-size);
+}
+
+.selected::before {
+  color: white;
+  background-color: var(--selected-background-color);
+}
+
+ol li:not(:first-of-type)::after {
+  content: "";
+  display: block;
+  width: calc(100% - var(--circle-width));
+  height: var(--divider-line-height);
+  background-color: black;
+  position: absolute;
+  left: calc(-50% + var(--circle-radius));
+  top: calc(var(--circle-radius) + 
+        var(--circle-border-width) -
+        var(--divider-line-height) / 2);
+}
+
 ul {
   padding: 0;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  height: var(--product-offering-height);
+  padding: var(--product-offering-padding);
+  border-radius: var(--product-offering-border-radius);
+  margin: var(--product-offering-vertical-margin) 0;
+  background-color: white;
+  font-weight: bold;
+  border-left: var(--product-offering-left-border-size) solid var(--product-color);
+  color: var(--product-color);
+}
+
+.blue-product {
+  --product-color: var(--blue-product-color)
+}
+
+.red-product {
+  --product-color: var(--red-product-color)
+}
+
+.orange-product {
+  --product-color: var(--orange-product-color)
+}
+
+.green-product {
+  --product-color: var(--green-product-color)
+}
+
+label {
+  margin-left: var(--label-left-margin);
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  padding: var(--button-padding);
+  font-size: var(--button-font-size);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  color: white
 }
