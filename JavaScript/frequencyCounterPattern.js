@@ -68,3 +68,31 @@ function validAnagram(word1, word2) {
      }
      return true
 }
+
+// trying the second solution
+
+function validAnagram(word1, word2) {
+    if (word1.length !== word2.length) {
+        return false
+    }
+
+    const lookup = {}
+
+    for (let i = 0; i < word1.length; i++) {
+        let letter = word1[i]
+        // if letter exists, increment, otherwise set to 1
+        lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1
+    }
+    console.log(lookup)
+
+    for (let i =0; i < word2.length; i++) {
+        let letter = word2[i]
+        // can't find letter or letter is zero then it's not an anagram
+        if (!lookup[letter]) {
+            return false;
+        } else {
+            lookup[letter] -= 1
+        }
+    }
+    return true;
+}
